@@ -69,9 +69,9 @@ const Home = () => {
         <div className="content">
           <h3>Leading the way in medical excellence</h3>
           <p>
-            Largest network of the world’s finest and brightest medical experts
-            who provide compassionate care using outstanding expertise and
-            advanced technology.
+            Feel like having symptoms of Parkinson's Disease?
+            Worry not! We offer you a way to get over your fear
+            of the disease with the help of artificial intelligence
           </p>
         </div>
       </section>
