@@ -120,7 +120,6 @@ function HamburgerMenu() {
   const [click, setClick] = useState(false);
   const handleClick = (dest) => {
     setClick(!click);
-    if (dest) window.location.href = window.location.origin + dest;
   };
   return (
     <>
@@ -138,20 +137,18 @@ function HamburgerMenu() {
           </li>
           <li>
             <ItemLink
-              onClick={(e) => handleClick('/adminAuth')}
-              to="/adminAuth"
+              to="https://en.wikipedia.org/wiki/Parkinson%27s_disease"
+              target={'_blank'}
             >
-              Admin
+              About
             </ItemLink>
           </li>
           <li>
-            <ItemLink onClick={(e) => handleClick('/doctor')} to="/doctor">
-              Doctor
-            </ItemLink>
-          </li>
-          <li>
-            <ItemLink onClick={(e) => handleClick('/patient')} to="/patient">
-              Patient
+            <ItemLink
+              to="https://github.com/kakarot03/Parkinson-Disease-Prediction"
+              target={'_blank'}
+            >
+              Code
             </ItemLink>
           </li>
         </List>

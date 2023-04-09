@@ -41,12 +41,19 @@ const Home = () => {
     const data = {
       file: base64,
     };
+    let resultLocal;
     await axios.post('http://127.0.0.1:5000/park', data).then((response) => {
       setResult(response.data);
+      resultLocal = response.data;
     });
     setTimeout(() => {
       const section = document.querySelector('#report');
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (resultLocal === 'Normal') {
+        document.getElementById('prediction').style.color = 'green';
+      } else {
+        document.getElementById('prediction').style.color = 'red';
+      }
     }, 1000);
   };
 
@@ -69,9 +76,9 @@ const Home = () => {
         <div className="content">
           <h3>Leading the way in medical excellence</h3>
           <p>
-            Feel like having symptoms of Parkinson's Disease?
-            Worry not! We offer you a way to get over your fear
-            of the disease with the help of artificial intelligence
+            Feel like having symptoms of Parkinson's Disease? Worry not! We
+            offer you a way to get over your fear of the disease with the help
+            of artificial intelligence
           </p>
         </div>
       </section>
@@ -186,8 +193,9 @@ const Home = () => {
           <div className="content" id="report">
             <h3>
               Prediction -{' '}
-              {result === 'Normal' ? getPercentge(5, 20) : getPercentge(78, 96)}
-              %
+              <span id="prediction">
+                {result}
+              </span>
             </h3>
             {result === 'Normal' ? (
               <div>
@@ -231,6 +239,34 @@ const Home = () => {
       ) : (
         <div className=""></div>
       )}
+
+      <div className="contact">
+        <small>Enter message (optional) and click button "Send"</small>
+        <div className="wrapper centered">
+          <article className="letter">
+            <div className="side">
+              <h1>Contact us</h1>
+              <p>
+                <textarea placeholder="Your message"></textarea>
+              </p>
+            </div>
+            <div className="side">
+              <p>
+                <input type="text" placeholder="Your name" />
+              </p>
+              <p>
+                <input type="email" placeholder="Your email" />
+              </p>
+              <p>
+                <button id="sendLetter">Send</button>
+              </p>
+            </div>
+          </article>
+          <div className="envelope front"></div>
+          <div className="envelope back"></div>
+        </div>
+        <p className="result-message centered">Thank you for your message</p>
+      </div>
     </div>
   );
 };
